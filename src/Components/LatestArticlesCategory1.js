@@ -5,29 +5,29 @@ import { BlogContext } from './BlogContext';
 import TopPosts from './TopPosts';
 
 const LatestArticlesCategory1 = () => {
-  const [loadMore, setLoadMore] = useState(false);
-  const [loadMoreBtn, setLoadMoreBtn] = useState('Load More');
-  const [arrow, setArrow] = useState(
-    <i className='fas fa-arrow-down' style={{ color: 'orange' }}></i>
-  );
+  const [loadMore] = useState(false);
+  // const [loadMoreBtn, setLoadMoreBtn] = useState('Load More');
+  // const [arrow, setArrow] = useState(
+  //   <i className='fas fa-arrow-down' style={{ color: 'orange' }}></i>
+  // );
 
   const { value1, value2 } = useContext(BlogContext);
 
   const [bollywood] = value1;
   const [hollywood] = value2;
 
-  const handleClick = () => {
-    setLoadMore(!loadMore);
-    if (loadMoreBtn === 'Load More') {
-      setLoadMoreBtn('Load Less');
-      setArrow(<i className='fas fa-arrow-up' style={{ color: 'orange' }}></i>);
-    } else {
-      setLoadMoreBtn('Load More');
-      setArrow(
-        <i className='fas fa-arrow-down' style={{ color: 'orange' }}></i>
-      );
-    }
-  };
+  // const handleClick = () => {
+  //   setLoadMore(!loadMore);
+  //   if (loadMoreBtn === 'Load More') {
+  //     setLoadMoreBtn('Load Less');
+  //     // setArrow(<i className='fas fa-arrow-up' style={{ color: '#f0f0f0' }}></i>);
+  //   } else {
+  //     setLoadMoreBtn('Load More');
+  //     setArrow(
+  //       // <i className='fas fa-arrow-down' style={{ color: '#f0f0f0' }}></i>
+  //     );
+  //   }
+  // };
 
   return (
     <div className={styles.AllSections_Main}>
@@ -41,7 +41,7 @@ const LatestArticlesCategory1 = () => {
             {
               // eslint-disable-next-line
               bollywood.map((article, index) => {
-                if (!loadMore && index >= bollywood.length - 3) {
+                if (!loadMore && index >= bollywood.length - 5) {
                   return (
                     <div key={index} className={styles.category1_Card}>
                       <div>
@@ -73,7 +73,7 @@ const LatestArticlesCategory1 = () => {
                       </div>
                     </div>
                   );
-                } else if (loadMore && index >= bollywood.length - 5) {
+                } else if (loadMore && index >= bollywood.length - 3) {
                   return (
                     <div key={index} className={styles.category1_Card}>
                       <div>
@@ -110,10 +110,10 @@ const LatestArticlesCategory1 = () => {
             }
           </div>
           <div>
-            <button className={styles.loadMore_Btn} onClick={handleClick}>
+            {/* <button className={styles.loadMore_Btn} onClick={handleClick}>
               {arrow}
               {loadMoreBtn}
-            </button>
+            </button> */}
           </div>
           <div>
             {
@@ -151,7 +151,7 @@ const LatestArticlesCategory1 = () => {
         </div>
         <div className={styles.category1_Bottom_Right}>
           <div className={styles.category1_Bottom_Right1}>
-            <div className={styles.advertisement}>Advertisement</div>
+            <div className={styles.advertisement}></div>
           </div>
           <div className={styles.category1_Bottom_Right2}>
             <TopPosts />

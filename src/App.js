@@ -1,3 +1,5 @@
+import { useState,useRef,useEffect } from 'react';
+import Confetti from 'react-confetti';
 import {
   BrowserRouter as Router,
   Routes,
@@ -10,8 +12,22 @@ import CategoryPage from './Components/CategoryPage';
 import Header from './Components/Header';
 import Home from './Components/Home';
 import PageNotFound from './Components/PageNotFound';
+
 function App() {
+
+const [height,setHeight]=useState(null);
+const [width,setWidth]=useState(null);
+const confettiRef=useRef(null);
+
+useEffect(() => {
+ setHeight(confettiRef.current.clientHeight)
+ setWidth(confettiRef.current.clientWidth)
+}, [])
+
+
+
   return (
+<div ref={confettiRef}>
     <BlogProvider>
       <Router>
         <Header />
@@ -31,6 +47,12 @@ function App() {
         </Routes>
       </Router>
     </BlogProvider>
+    <Confetti 
+
+    width={width}
+    height={height}
+    />
+    </div>
   );
 }
 
