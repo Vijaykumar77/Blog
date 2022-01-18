@@ -31,6 +31,11 @@ useEffect(() => {
     <BlogProvider>
       <Router>
         <Header />
+        <Confetti 
+
+width={width}
+height={height}
+/>
 
         <Routes>
           <Route path='/' element={<Navigate to={'/home'} />} />
@@ -47,11 +52,7 @@ useEffect(() => {
         </Routes>
       </Router>
     </BlogProvider>
-    <Confetti 
-
-    width={width}
-    height={height}
-    />
+ 
     </div>
   );
 }
